@@ -1,0 +1,11 @@
+.pageContainer {
+  width: 100%;
+  min-height: calc(100vh - 57px); /* Ocupa a tela descontando o Header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background-color: #f8fafc; /* Mesma cor de fundo da Dashboard */
+  font-family: system-ui, -apple-system, sans-serif;
+}
