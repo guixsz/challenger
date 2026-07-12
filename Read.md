@@ -2,6 +2,9 @@
 
 Este é o back-end do ecossistema de controle financeiro. A API foi desenvolvida utilizando **.NET / C#** (executando por padrão na porta `5105`), sendo responsável pelo gerenciamento de usuários, consolidação de saldos e aplicação das regras de negócio de transações.
 
+
+Caso queira utilizar  API de foma bruta, utilize o `/swagger`
+
 ---
 
 ## 🛠️ Tecnologias e Configurações
@@ -9,6 +12,7 @@ Este é o back-end do ecossistema de controle financeiro. A API foi desenvolvida
 *   **Runtime:** .NET 8.0 / 9.0 (C#)
 *   **Porta Local Padrão:** `http://localhost:5105`
 *   **Formato de Comunicação:** JSON (`application/json`)
+*   **Swagger:** `http://localhost:5105/swagger`
 
 > **Nota sobre Serialização:** A API está configurada para mapear automaticamente payloads enviados pelo Front-end. Caso ocorram problemas de desserialização (valores retornando como `0` ou `null`), certifique-se de enviar os dados em conformidade com as chaves esperadas ou configure o conversor do ciclo de vida da API para *CamelCase*.
 
@@ -106,11 +110,28 @@ Caso o `PersonId` pertença a um menor de idade e o tipo seja `Income`, a API re
     }
     ```
 
+Caso o `PersonId` não pertença ao banco de dados, a API retornará:
+*   **Status:** `400 Bad Request`
+*   **Corpo:**
+    ```json
+    {
+      "message": "Essa pessoa não existe"
+    }
+    ```
+
 ---
 
 ## 🚀 Como Executar o Back-end Localmente
 
-1. Certifique-se de ter o **SDK do .NET** instalado na sua máquina.
-2. Navegue até a pasta raiz do back-end pelo terminal:
-   ```bash
-   cd caminho/para/o/seu/projeto/backend
+1. Certifique-se de ter o **SDK do .NET** e o **npm** instalado na sua máquina.
+2. Navegue até a pasta raiz do back-end (Challenger-api) pelo terminal:
+3. Utilize o comando 
+    ```bash
+      dotnet run 
+    ```
+4. Navegue até a pasta raiz do front-end (Challenger-web) pelo terminal
+5. Utilize o comando
+    ```bash
+    npm run dev
+    ```
+
