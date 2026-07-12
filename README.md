@@ -89,13 +89,15 @@ Retorna o histórico bruto de movimentações financeiras inseridas no sistema.
 
 #### 2. Criar Nova Transação
 Insere uma nova movimentação vinculada a um usuário cadastrado.
+
 *   **Rota:** `POST /transaction`
 *   **Payload Esperado:**
+*   **Na variável Type utilize 0 ou 1 || 0 -> Expense, 1 -> Income**
     ```json
     {
       "Description": "Aluguel",
       "Amount": 1200.00,
-      "Type": "Expense",
+      "Type": 0,
       "PersonId": 1
     }
     ```
