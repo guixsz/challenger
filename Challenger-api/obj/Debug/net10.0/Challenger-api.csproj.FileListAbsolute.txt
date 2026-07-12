@@ -129,3 +129,4 @@ C:\Users\sants\Challenger\Challenger-api\bin\Debug\net10.0\runtimes\win-arm\nati
 C:\Users\sants\Challenger\Challenger-api\bin\Debug\net10.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\sants\Challenger\Challenger-api\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\sants\Challenger\Challenger-api\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\sants\Challenger\Challenger-api\obj\Debug\net10.0\Challenger-api.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Challenger-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14e67edf457a9fabfa6237acf2b480615f2f21f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Challenger-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Challenger-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

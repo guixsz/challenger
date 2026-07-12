@@ -12,7 +12,7 @@ public static class PersonRoutes
         var route = app.MapGroup("person");
         
         //Metódo POST -> cadastro de pessoas utilizando um record no corpo da requisição
-        route.MapPost("", async (PersonRequest person, PersonContext context) =>
+        route.MapPost("", async (PersonRequest person, appContext context) =>
         {
             var newPerson = new Person(person.name, person.age);
             await context.AddAsync(newPerson);
@@ -20,14 +20,14 @@ public static class PersonRoutes
         });
 
         // Método GET -> Retornará todos os dados da tabela pessoa
-        route.MapGet("", async (PersonContext context) =>
+        route.MapGet("", async (appContext context) =>
         {
             var people = await context.people.ToListAsync();
             return Results.Ok(people);
         });
 
         // Método DELETE -> deletará a pessoa e toda as transações pertencentes a essa pessoa
-        route.MapDelete("{id:guid}", async (Guid id, PersonContext context) =>
+        route.MapDelete("{id:guid}", async (Guid id, appContext context) =>
         {
             // Encontrará a pessao no tabela pessoa com base no id passado como parâmetro
             var person =  await context.people.FirstOrDefaultAsync(x => x.id == id);
@@ -56,8 +56,8 @@ public static class PersonRoutes
             return Results.Ok();
         });
 
-        // Método GET -> buscará os dados da tabela pessoa e transação e trará uma panorâmica sobre as despessas e receitas
-        route.MapGet("total", async (PersonContext context) =>
+        // Método GET -> buscará os dados da tabela pessoa e transação e trará uma panorâmica sobre as despesas e receitas
+        route.MapGet("total", async (appContext context) =>
         {
             // Buscará todos os dados da tabela pessoa
             var people = await context.people.ToListAsync();
@@ -73,7 +73,7 @@ public static class PersonRoutes
                         .Where(t => t.PersonId == person.id && t.Type == TransactionType.Income)
                         .Sum(t => t.Amount);
 
-                    // Busca todas as transações de despessas
+                    // Busca todas as transações de despesas
                     var expensesTotal = transactions
                         .Where(t => t.PersonId == person.id && t.Type == TransactionType.Expense)
                         .Sum(t => t.Amount);
@@ -95,7 +95,7 @@ public static class PersonRoutes
             
             // Cálculo para encontrar o total de receita das pessaos na tabela 
             var grandTotalIncomes = peopleBalance.Sum(p => p.incomeTotal);
-            // Cálculo para encontrar o total de despessas das pessaos na tabela 
+            // Cálculo para encontrar o total de despesas das pessaos na tabela 
             var grandTotalExpenses = peopleBalance.Sum(p => p.expenseTotal);
             // Cálculo para encontrar o saldo total 
             var netBalance = grandTotalIncomes - grandTotalExpenses;
